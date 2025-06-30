@@ -1,0 +1,14 @@
+
+State Machine - |vga_controller|fsm_vsync:vsync_inst|state
+Name state.V3 state.V2 state.V1 state.V0 
+state.V0 0 0 0 0 
+state.V1 0 0 1 1 
+state.V2 0 1 0 1 
+state.V3 1 0 0 1 
+
+State Machine - |vga_controller|fsm_hsync:hsync_inst|state
+Name state.H3 state.H2 state.H1 state.H0 
+state.H0 0 0 0 0 
+state.H1 0 0 1 1 
+state.H2 0 1 0 1 
+state.H3 1 0 0 1 

@@ -1,0 +1,48 @@
+module vga_controller (
+    input  logic        clk,
+    input  logic        reset,
+
+    output logic [10:0] pixel_x,     // Horizontal pixel position
+    output logic [9:0]  pixel_y,     // Vertical line position
+    output logic        hsync,
+    output logic        vsync,
+    output logic        video_on
+);
+
+    // ─────────────────────────────────────
+    // Intermediate Signals
+    // ─────────────────────────────────────
+    logic video_on_h, video_on_v;
+    logic line_done;
+
+    // ─────────────────────────────────────
+    // HSYNC Controller Instance
+    // ─────────────────────────────────────
+    hsync_controller hsync_inst (
+        .clk        (clk),
+        .reset      (reset),
+        .pixel_x    (pixel_x),
+        .hsync      (hsync),
+        .video_on_h (video_on_h),
+        .line_done  (line_done)
+    );
+
+    // ─────────────────────────────────────
+    // VSYNC Controller Instance
+    // ─────────────────────────────────────
+    vsync_controller vsync_inst (
+        .clk        (clk),
+        .reset      (reset),
+        .line_done  (line_done),
+        .pixel_y    (pixel_y),
+        .vsync      (vsync),
+        .video_on_v (video_on_v),
+        .frame_done () // Optional — can leave unconnected
+    );
+
+    // ─────────────────────────────────────
+    // Final Output Logic
+    // ─────────────────────────────────────
+    assign video_on = video_on_h && video_on_v;
+
+endmodule
