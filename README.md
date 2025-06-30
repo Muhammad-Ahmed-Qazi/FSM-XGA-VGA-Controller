@@ -96,11 +96,3 @@ This project is part of a learning journey inspired by the book:
 Special thanks to **Sir Fahim** and the **NEDUET CIS department** for support and mentorship.
 
 ---
-
-Let me know if you'd like to:
-
-- Add screenshots from GTKWave or actual VGA output
-- Include links to relevant research or papers
-- Customise it with your name and portfolio site
-
-Would you like me to generate this into a downloadable `README.md` file as well?
